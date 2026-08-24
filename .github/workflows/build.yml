@@ -39,7 +39,7 @@ jobs:
 
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v5
+        uses: cloudflare/wrangler-action@main
         with:
           api-token: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
