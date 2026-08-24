@@ -39,12 +39,11 @@ jobs:
 
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@main
+        uses: cloudflare/wrangler-action@v3
         with:
-          api-token: ${{ secrets.CF_API_TOKEN }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          domain: "blog-chq.pages.dev"
-          directory: public
+          command: pages deploy public --project-name=blog-chq
 
       - name: deploying to surge
         uses: mahmoudgalalz/surge-action@v0.1.5
