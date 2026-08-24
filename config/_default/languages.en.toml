@@ -1,0 +1,13 @@
+disabled = false
+locale = "en"
+label = "English"
+weight = 1
+title = "Prohllad Mustafi"
+
+[params]
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+description = "My personal Blog"
+logo = "20200923_214332.png"

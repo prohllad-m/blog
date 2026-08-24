@@ -1,0 +1,30 @@
+[[main]]
+none = "none"
+
+[[main]]
+name = "home"
+pre = "blogger"
+pageRef = "newSite"
+identifier = "QbRQYsklQu"
+weight = 1
+
+[[main]]
+name = "contact us"
+pageRef = "newSite"
+identifier = "lWqzNbTikb"
+weight = 4
+
+[[main]]
+name = "Recent Post"
+pageRef = "newSite"
+identifier = "eYalqr2qQQ"
+weight = 3
+
+[[main]]
+name = "social medias"
+pageRef = "newSite"
+identifier = "nwceSHMWv2"
+weight = 2
+
+[[footer]]
+none = "none"
