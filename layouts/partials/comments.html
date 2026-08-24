@@ -1,35 +1,18 @@
 {{/* Applause Button + Giscus - integrated */}}
-<div class="mt-8 flex flex-col items-center gap-3 py-6 border-t border-dotted border-neutral-300 dark:border-neutral-600">
-  <p class="text-sm font-medium text-neutral-600 dark:text-neutral-400">Enjoyed this post? Show your support!</p>
+<div
+  class="mt-8 flex flex-col items-center gap-3 py-6 border-t border-dotted border-neutral-300 dark:border-neutral-600">
   {{/* url is per-page permalink so counts are isolated per article; multiclap allows up to 10 claps */}}
-  <applause-button
-    url="{{ .Permalink }}"
-    multiclap="true"
-    color="#6366f1"
-    style="width: 72px; height: 72px;">
+  <applause-button url="{{ .Permalink }}" multiclap="true" color="#6366f1" style="width: 72px; height: 72px;">
   </applause-button>
-  <p class="text-xs text-neutral-500 dark:text-neutral-500">Clap up to 10 times — powered by applause-button</p>
 </div>
 
 <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
 
 {{/* Giscus comments */}}
 <div class="giscus-wrapper w-full">
-  <script src="https://giscus.app/client.js"
-    data-repo="prohllad-m/blog"
-    data-repo-id="R_kgDOUCkFsQ"
-    data-category="General"
-    data-category-id="DIC_kwDOUCkFsc4DEFIc"
-    data-mapping="url"
-    data-strict="1"
-    data-reactions-enabled="1"
-    data-emit-metadata="1"
-    data-input-position="top"
-    data-theme="cobalt"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
-  <noscript class="text-sm text-neutral-500 dark:text-neutral-400">Please enable JavaScript to view the comments powered by <a href="https://giscus.app" target="_blank" rel="noopener">giscus</a>.</noscript>
+  <script src="https://giscus.app/client.js" data-repo="prohllad-m/blog" data-repo-id="R_kgDOUCkFsQ"
+    data-category="General" data-category-id="DIC_kwDOUCkFsc4DEFIc" data-mapping="url" data-strict="1"
+    data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="cobalt" data-lang="en"
+    data-loading="lazy" crossorigin="anonymous" async>
+    </script>
 </div>
