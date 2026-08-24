@@ -43,7 +43,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy public --project-name=blog-chq
+          command: pages deploy public --project-name=blog
 
       - name: deploying to surge
         uses: mahmoudgalalz/surge-action@v0.1.5
