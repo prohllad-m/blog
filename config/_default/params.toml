@@ -5,7 +5,7 @@ enableA11y = true
 enableSearch = true
 enableCodeCopy = true
 enableStructuredBreadcrumbs = true
-replyByEmail = true
+replyByEmail = false
 disableImageOptimization = false
 disableImageOptimizationMD = false
 disableTextInHeader = false
@@ -20,11 +20,13 @@ umamiAnalytics = { }
 selineAnalytics = { }
 buymeacoffee = { }
 verification = { }
-advertisement = { }
 goatCounter = "https://prohllad.goatcounter.com"
 highlightCurrentMenuArea = true
 robots = "allow *\\"
 showViews = ""
+
+[advertisement]
+adsense = "ca-pub-7963076837825443"
 
 [rssnext]
 feedId = "1"
