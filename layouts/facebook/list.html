@@ -1,0 +1,100 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+
+  <header class="mt-5">
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      {{ .Title | emojify }}
+    </h1>
+    <div class="mt-2 text-base text-neutral-500 dark:text-neutral-400">
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </header>
+
+  <section class="mt-6 prose dark:prose-invert max-w-full">
+    {{ .Content }}
+  </section>
+
+  {{/* Facebook Page Plugin */}}
+  <section class="mt-8 w-full">
+    <div class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-4 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+        <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-100 flex items-center gap-2 m-0">
+          <span class="w-6 h-6 text-[#1877F2]">{{ partial "icon.html" "facebook" }}</span>
+          facebook.com/ltapm
+        </h2>
+        <a href="https://www.facebook.com/ltapm/?ref=embed_page" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-5 py-2 text-sm font-semibold text-white hover:bg-[#166fe5] transition-colors no-underline">
+          Open on Facebook
+        </a>
+      </div>
+
+      {{/* Responsive iframe container */}}
+      <div class="flex flex-col lg:flex-row gap-6">
+        {{/* Timeline embed */}}
+        <div class="flex-1 min-w-0">
+          <div class="relative w-full overflow-hidden rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fltapm&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="500"
+              height="700"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="Facebook Page - Local Travelling and Art"
+              class="w-full max-w-[500px] mx-auto block"
+              loading="lazy">
+            </iframe>
+          </div>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 text-center">
+            Timeline preview via Facebook Page Plugin. If it doesn't load, <a href="https://www.facebook.com/ltapm/?ref=embed_page" target="_blank" rel="noopener">open Facebook directly</a>.
+          </p>
+        </div>
+
+        {{/* Side info / CTA */}}
+        <div class="lg:w-[340px] flex flex-col gap-4">
+          <div class="rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-4">
+            <h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100 mb-2">About this Page</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+              Local Travelling and Art — travel, art, poems, recitation & culture by Prohllad Mustafi.
+              Like and follow on Facebook to get latest posts and live updates.
+            </p>
+            <div class="mt-4 flex flex-col gap-2">
+              <a href="https://www.facebook.com/ltapm/?ref=embed_page" target="_blank" rel="noopener noreferrer"
+                class="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-[#1877F2] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#166fe5] transition-colors no-underline">
+                {{ partial "icon.html" "facebook" }} Follow Page
+              </a>
+              <a href="https://www.facebook.com/ltapm/messages" target="_blank" rel="noopener noreferrer"
+                class="w-full inline-flex justify-center items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-4 py-2.5 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors no-underline">
+                Message on Messenger
+              </a>
+            </div>
+          </div>
+
+          {{/* Small alternative embed (cover + facepile) */}}
+          <div class="rounded-xl overflow-hidden bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fltapm&tabs=&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+              width="340"
+              height="130"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="Facebook Page Header"
+              class="w-full block"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/* Fallback SDK-free notice */}}
+    <div class="mt-6 text-sm text-neutral-500 dark:text-neutral-400 prose dark:prose-invert max-w-none">
+      <p><strong>Privacy note:</strong> This embed loads content directly from <code>facebook.com</code> via an iframe. No Facebook SDK is loaded by default.</p>
+    </div>
+  </section>
+{{ end }}

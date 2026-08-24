@@ -1,0 +1,33 @@
+<span>
+  {{ $id := "null" }}
+  {{ $path := .RelPermalink }}
+  {{ if eq .Kind "taxonomy" }}
+    {{ $id = delimit (slice "views_taxonomy_" .Page.Data.Plural) "" }}
+    {{ $path = .RelPermalink }}
+  {{ else if eq .Kind "term" }}
+    {{ $id = delimit (slice "views_term_" .Page.Data.Term) "" }}
+    {{ $path = .RelPermalink }}
+  {{ else }}
+    {{ $translations := .AllTranslations }}
+    {{ with .File }}
+      {{ $p := .Path }}
+      {{ range $translations }}
+        {{ $lang := print "." .Language.Name ".md" }}
+        {{ $p = replace $p $lang ".md" }}
+      {{ end }}
+      {{ $id = delimit (slice "views_" $p) "" }}
+    {{ end }}
+    {{ if eq $id "null" }}
+      {{/* Fallback for pages without File (e.g. _index.md sections) - use RelPermalink hashed */}}
+      {{ $id = printf "views_%s" (replace (replace $path "/" "-") "." "-") }}
+    {{ end }}
+  {{ end }}
+  <span
+    id="{{ $id }}"
+    data-goatcounter-path="{{ $path }}"
+    class="goatcounter-views animate-pulse inline-block text-transparent max-h-3 rounded-full -mt-[2px] align-middle bg-neutral-300 dark:bg-neutral-400"
+    title="views"
+    >loading</span
+  >
+  <span class="inline-block align-text-bottom">{{ partial "icon.html" "eye" }}</span>
+</span>

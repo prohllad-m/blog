@@ -1,0 +1,66 @@
+{{/* Applause-button CSS - only on pages where comments/applause can appear */}}
+{{ if and .IsPage ( .Params.showComments | default (site.Params.article.showComments | default false) ) }}
+<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
+<style>
+  applause-button {
+    width: 72px;
+    height: 72px;
+  }
+  applause-button .style-root {
+    --main-color: var(--color-primary-600, #6366f1);
+  }
+  html.dark applause-button .style-root,
+  :where(.dark) applause-button .style-root {
+    --main-color: var(--color-primary-400, #a5b4fc);
+  }
+</style>
+{{ end }}
+
+{{/* GoatCounter views display - replaces Firebase for showViews */}}
+<script>
+  (function () {
+    function formatNumber(n) {
+      return Number(n).toLocaleString("en");
+    }
+    function updateGoatViews() {
+      var nodes = document.querySelectorAll("span.goatcounter-views, span[id^='views_']");
+      if (!nodes.length) return;
+      var base = "https://prohllad.goatcounter.com";
+      // Fallback from site param if set
+      {{ with site.Params.goatCounter }}base = "{{ . }}";{{ end }}
+      nodes.forEach(function (el) {
+        var path = el.getAttribute("data-goatcounter-path") || el.getAttribute("data-path") || window.location.pathname;
+        // Ensure leading slash
+        if (path && path.charAt(0) !== "/") path = "/" + path;
+        var url = base + "/counter" + encodeURIComponent(path) + ".json";
+        fetch(url, { method: "GET", headers: { Accept: "application/json" } })
+          .then(function (r) {
+            // GoatCounter returns JSON even on 404 (0 views), so parse regardless
+            return r.text().then(function (t) {
+              try { return JSON.parse(t); } catch (e) { return { count: 0 }; }
+            });
+          })
+          .then(function (data) {
+            var c = data.count != null ? data.count : (data.count_unique || 0);
+            // Fallback to 0 if not a number
+            if (isNaN(c)) c = 0;
+            el.textContent = formatNumber(c);
+            el.classList.remove("animate-pulse", "text-transparent", "bg-neutral-300", "dark:bg-neutral-400", "max-h-3", "rounded-full", "-mt-[2px]", "align-middle");
+            el.classList.add("text-neutral-700", "dark:text-neutral-300");
+            el.removeAttribute("title");
+          })
+          .catch(function () {
+            el.textContent = "—";
+            el.classList.remove("animate-pulse", "text-transparent", "bg-neutral-300", "dark:bg-neutral-400");
+          });
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", updateGoatViews);
+    } else {
+      updateGoatViews();
+    }
+    // Also re-run after a short delay for SPA-like navigation (Blowfish doesn't use SPA but safe)
+    window.addEventListener("load", function () { setTimeout(updateGoatViews, 500); });
+  })();
+</script>

@@ -1,30 +1,36 @@
 [[main]]
-none = "none"
+  name = "Home"
+  pageRef = "/"
+  weight = 1
 
 [[main]]
-name = "home"
-pre = "blogger"
-pageRef = "newSite"
-identifier = "QbRQYsklQu"
-weight = 1
+  name = "Posts"
+  pageRef = "posts"
+  weight = 10
 
 [[main]]
-name = "contact us"
-pageRef = "newSite"
-identifier = "lWqzNbTikb"
-weight = 4
+  name = "Facebook"
+  pageRef = "facebook"
+  pre = "facebook"
+  weight = 20
 
 [[main]]
-name = "Recent Post"
-pageRef = "newSite"
-identifier = "eYalqr2qQQ"
-weight = 3
+  name = "YouTube"
+  pageRef = "youtube"
+  pre = "youtube"
+  weight = 21
 
 [[main]]
-name = "social medias"
-pageRef = "newSite"
-identifier = "nwceSHMWv2"
-weight = 2
+  name = "Tags"
+  pageRef = "tags"
+  weight = 30
 
 [[footer]]
-none = "none"
+  name = "Facebook"
+  pageRef = "facebook"
+  weight = 10
+
+[[footer]]
+  name = "YouTube"
+  pageRef = "youtube"
+  weight = 11
