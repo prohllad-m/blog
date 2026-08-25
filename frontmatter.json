@@ -19,7 +19,7 @@
         {
           "title": "Publishing date",
           "name": "date",
-          "type": "datetime",
+          "type": "string",
           "default": "{{now}}",
           "isPublishDate": true
         },
