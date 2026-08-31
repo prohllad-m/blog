@@ -6,9 +6,11 @@
     width: 72px;
     height: 72px;
   }
+
   applause-button .style-root {
     --main-color: var(--color-primary-600, #6366f1);
   }
+
   html.dark applause-button .style-root,
   :where(.dark) applause-button .style-root {
     --main-color: var(--color-primary-400, #a5b4fc);
@@ -26,16 +28,13 @@
       var nodes = document.querySelectorAll("span.goatcounter-views, span[id^='views_']");
       if (!nodes.length) return;
       var base = "https://prohllad.goatcounter.com";
-      // Fallback from site param if set
-      {{ with site.Params.goatCounter }}base = "{{ . }}";{{ end }}
+      { { with (site.Params.goatCounter) } } base = "{{ . }}"; { { end } }
       nodes.forEach(function (el) {
         var path = el.getAttribute("data-goatcounter-path") || el.getAttribute("data-path") || window.location.pathname;
-        // Ensure leading slash
         if (path && path.charAt(0) !== "/") path = "/" + path;
         var url = base + "/counter" + encodeURIComponent(path) + ".json";
         fetch(url, { method: "GET", headers: { Accept: "application/json" } })
           .then(function (r) {
-            // GoatCounter returns JSON even on 404 (0 views), so parse regardless
             return r.text().then(function (t) {
               try { return JSON.parse(t); } catch (e) { return { count: 0 }; }
             });

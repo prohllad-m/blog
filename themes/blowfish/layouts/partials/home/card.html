@@ -3,9 +3,9 @@
     <div class="mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none">
       <article class="max-w-full prose dark:prose-invert">
         {{ with .Title }}
-          <header>
-            <h1>{{ . | emojify }}</h1>
-          </header>
+        <header>
+          <h1>{{ . | emojify }}</h1>
+        </header>
         {{ end }}
         <section class="w-full">{{ .Content }}</section>
       </article>
@@ -14,32 +14,31 @@
       {{ $useDefault := true }}
       {{ $homepageImage := "" }}
       {{ with .Site.Params.defaultBackgroundImage }}
-        {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
-          {{ $homepageImage = resources.GetRemote . }}
-        {{ else }}
-          {{ $homepageImage = resources.Get . }}
-        {{ end }}
+      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+      {{ $homepageImage = resources.GetRemote . }}
+      {{ else }}
+      {{ $homepageImage = resources.Get . }}
+      {{ end }}
       {{ end }}
       {{ with .Site.Params.homepage.homepageImage }}
-        {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
-          {{ $homepageImage = resources.GetRemote . }}
-          {{ $useDefault = false }}
-        {{ else }}
-          {{ $homepageImage = resources.Get . }}
-          {{ $useDefault = false }}
-        {{ end }}
+      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+      {{ $homepageImage = resources.GetRemote . }}
+      {{ $useDefault = false }}
+      {{ else }}
+      {{ $homepageImage = resources.Get . }}
+      {{ $useDefault = false }}
+      {{ end }}
       {{ end }}
       {{ if $homepageImage }}
-        {{ $style := "" }}
-        {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
-        {{ with $.Params.imagePosition | default $defaultPosition }}
-          {{ $style = printf "object-position: %s;" . }}
-        {{ end }}
-        <img
-          class="nozoom aspect-[4/3] w-full rounded-2xl border border-neutral-200/80 object-cover shadow-lg shadow-neutral-900/5 dark:border-neutral-700/80"
-          src="{{ $homepageImage.RelPermalink }}"
-          role="presentation"
-          {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
+      {{ $style := "" }}
+      {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
+      {{ with $.Params.imagePosition | default $defaultPosition }}
+      {{ $style = printf "object-position: %s;" . }}
+      {{ end }}
+      <img
+        class="nozoom w-full rounded-2xl border border-neutral-200/80 object-cover shadow-lg shadow-neutral-900/5 dark:border-neutral-700/80"
+        src="{{ $homepageImage.RelPermalink }}" role="presentation" {{ if $style }}style="{{ $style | safeCSS }}" {{ end
+        }}>
       {{ end }}
     </div>
   </div>

@@ -11,6 +11,7 @@ rtl = false
 dateFormat = "2 January 2006"
 description = "My personal Blog"
 logo = "20200923_214332.png"
+goatCounter = "https://prohllad.goatcounter.com"  
 
 ["params.author"]
 name = " "
