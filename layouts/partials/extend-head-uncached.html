@@ -58,7 +58,6 @@
     } else {
       updateGoatViews();
     }
-    // Also re-run after a short delay for SPA-like navigation (Blowfish doesn't use SPA but safe)
     window.addEventListener("load", function () { setTimeout(updateGoatViews, 500); });
   })();
 </script>

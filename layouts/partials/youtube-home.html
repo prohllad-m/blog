@@ -5,30 +5,40 @@
     <h2 class="text-2xl font-extrabold text-neutral-900 dark:text-neutral-100 flex items-center gap-2 m-0">
       <span class="w-6 h-6 text-[#FF0000]">{{ partial "icon.html" "youtube" }}</span> Latest on YouTube
     </h2>
-    <a href="{{ "youtube" | relLangURL }}" class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline no-underline">All videos →</a>
+    <a href="{{ " youtube" | relLangURL }}"
+      class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline no-underline">All videos →</a>
   </div>
-  <div class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-4 sm:p-5">
+  <div
+    class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-4 sm:p-5">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {{ range first 6 $videos }}
-        <a href="{{ .link }}" target="_blank" rel="noopener" class="group rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-md transition block no-underline">
-          <div class="relative aspect-video bg-black overflow-hidden">
-            <img src="https://i.ytimg.com/vi/{{ .id }}/hqdefault.jpg" alt="{{ .title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <span class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center shadow-md opacity-90 group-hover:opacity-100 group-hover:scale-105 transition">
-                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-white ml-0.5"><path d="M8 5.14v14l11-7z"/></svg>
-              </span>
-            </div>
+      <a href="{{ .link }}" target="_blank" rel="noopener"
+        class="group rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-md transition block no-underline">
+        <div class="relative aspect-video bg-black overflow-hidden">
+          <img src="https://i.ytimg.com/vi/{{ .id }}/hqdefault.jpg" alt="{{ .title }}" loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span
+              class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center shadow-md opacity-90 group-hover:opacity-100 group-hover:scale-105 transition">
+              <svg viewBox="0 0 24 24" class="w-4 h-4 fill-white ml-0.5">
+                <path d="M8 5.14v14l11-7z" />
+              </svg>
+            </span>
           </div>
-          <div class="p-3">
-            <p class="text-sm font-medium leading-snug text-neutral-900 dark:text-neutral-100 line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">{{ .title }}</p>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">{{ dateFormat "2 Jan 2006" .published }}</p>
-          </div>
-        </a>
+        </div>
+        <div class="p-3">
+          <p
+            class="text-sm font-medium leading-snug text-neutral-900 dark:text-neutral-100 line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">
+            {{ .title }}</p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">{{ dateFormat "2 Jan 2006" .published }}</p>
+        </div>
+      </a>
       {{ end }}
     </div>
     <div class="mt-4 flex justify-center gap-2">
-      <a href="https://www.youtube.com/@LocalTravellingandArt?sub_confirmation=1" target="_blank" rel="noopener" class="inline-flex items-center rounded-full bg-[#FF0000] px-5 py-2 text-sm font-semibold text-white hover:bg-[#e60000] no-underline">Subscribe on YouTube</a>
-      <a href="{{ "youtube" | relLangURL }}" class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-5 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 no-underline">Watch all</a>
+      <a href="{{ " youtube" | relLangURL }}"
+        class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-5 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 no-underline">Watch
+        all</a>
     </div>
   </div>
 </section>
