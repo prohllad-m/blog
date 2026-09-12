@@ -41,7 +41,6 @@
           })
           .then(function (data) {
             var c = data.count != null ? data.count : (data.count_unique || 0);
-            // Fallback to 0 if not a number
             if (isNaN(c)) c = 0;
             el.textContent = formatNumber(c);
             el.classList.remove("animate-pulse", "text-transparent", "bg-neutral-300", "dark:bg-neutral-400", "max-h-3", "rounded-full", "-mt-[2px]", "align-middle");

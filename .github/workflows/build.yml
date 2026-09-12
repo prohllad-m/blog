@@ -37,18 +37,17 @@ jobs:
       - name: Index with Pagefind
         run: npx pagefind --site public
 
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy public --project-name=blog
+      # - name: Deploy to Cloudflare Pages
+      #   uses: cloudflare/wrangler-action@v3
+      #   with:
+      #     apiToken: ${{ secrets.CF_API_TOKEN }}
+      #     accountId: ${{ secrets.CF_ACCOUNT_ID }}
+      #     command: pages deploy public --project-name=blog
 
       - name: deploying to surge
         uses: mahmoudgalalz/surge-action@v0.1.5
         with:
-          domain: 'myblog-prohllad.surge.sh'
+          domain: 'prohllad.dpdns.org'
           path: './public'
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

@@ -1,0 +1,4 @@
+[tools]
+aube = "latest"
+hugo = "latest"
+"npm:surge" = "latest"
